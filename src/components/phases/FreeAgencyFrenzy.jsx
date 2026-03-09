@@ -166,7 +166,7 @@ export default function FreeAgencyFrenzy({ availableUFAs, capSpace, faRound, aiS
           </>
         ) : (
           <button className="btn btn-primary" onClick={onAdvance}>
-            Proceed to Re-Sign Your Players
+            Proceed to Offer Sheets
           </button>
         )}
       </div>

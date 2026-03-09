@@ -19,7 +19,7 @@ export default function QualifyingOffers({ pendingFAs, qoDecisions, onDecision, 
         <div className="no-candidates">
           <p>No RFAs requiring qualifying offers. All pending free agents are UFAs.</p>
           <div className="phase-actions">
-            <button className="btn btn-primary" onClick={onConfirm}>Proceed to NHL Draft</button>
+            <button className="btn btn-primary" onClick={onConfirm}>Proceed to Re-Sign Your Players</button>
           </div>
         </div>
       ) : (
@@ -79,7 +79,7 @@ export default function QualifyingOffers({ pendingFAs, qoDecisions, onDecision, 
 
           <div className="phase-actions">
             <button className="btn btn-primary" disabled={!allDecided} onClick={onConfirm}>
-              {allDecided ? 'Confirm & Proceed to NHL Draft' : `Decide on all ${rfas.length} RFAs to continue`}
+              {allDecided ? 'Confirm & Proceed to Re-Sign Players' : `Decide on all ${rfas.length} RFAs to continue`}
             </button>
           </div>
         </>

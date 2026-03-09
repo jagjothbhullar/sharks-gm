@@ -92,7 +92,7 @@ export default function ReSignOwn({ pendingFAs, capSpace, onReSign, onLetWalk, o
 
       <div className="phase-actions">
         <button className="btn btn-primary" onClick={onAdvance}>
-          {remaining.length === 0 ? 'Proceed to Extensions' : 'Skip Remaining & Proceed'}
+          {remaining.length === 0 ? 'Proceed to Extensions' : 'Skip Remaining & Continue'}
         </button>
       </div>
 

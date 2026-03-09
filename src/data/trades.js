@@ -206,4 +206,150 @@ export const TRADE_SCENARIOS = [
     impact: 'Give up your own 1st, a prospect, and a 4th to land an 80-point winger in his prime. Expensive, but Bratt next to Celebrini could be a franchise-defining pair.',
     tier: 'blockbuster',
   },
+
+  // ===== ADDITIONAL BLOCKBUSTER =====
+  {
+    id: 'trade-for-svechnikov',
+    title: 'Acquire Andrei Svechnikov from Carolina',
+    description: 'Carolina is retooling and Svechnikov\'s $7.75M cap hit is expendable as they get younger. He\'s a power winger with 30+ goal upside. They want the EDM 1st + a prospect (Lund) to accelerate their retool.',
+    partner: 'CAR',
+    partnerName: 'Carolina Hurricanes',
+    sending: {
+      players: [{ id: 'lund', name: 'Cameron Lund', position: 'C', capHit: 942_000 }],
+      picks: [
+        { round: 1, note: 'EDM 2026 1st (pick #19)', source: 'EDM' },
+      ],
+    },
+    receiving: {
+      players: [
+        { id: 'trade-svechnikov', name: 'Andrei Svechnikov', position: 'RW', age: 26, capHit: 7_750_000, contractEnd: 2029, type: 'UFA', overall: 87, potential: 88, note: 'Power winger. 30-goal scorer. Physical. 3 years of control.' },
+      ],
+      picks: [],
+    },
+    impact: 'Land a top-line winger in his prime with 3 years left. Expensive price but Svechnikov + Celebrini is a terrifying combo.',
+    tier: 'blockbuster',
+  },
+
+  // ===== ADDITIONAL MAJOR =====
+  {
+    id: 'trade-for-chychrun',
+    title: 'Acquire Jakob Chychrun from Washington',
+    description: 'Washington is aging out of contention. Chychrun ($4.6M×2) is a top-4 offensive defenseman who can quarterback a power play. They want a roster player (Goodrow) plus a mid-round pick.',
+    partner: 'WSH',
+    partnerName: 'Washington Capitals',
+    sending: {
+      players: [{ id: 'goodrow', name: 'Barclay Goodrow', position: 'LW', capHit: 3_641_667 }],
+      picks: [
+        { round: 4, note: 'FLA 2026 4th-round pick', source: 'FLA' },
+      ],
+    },
+    receiving: {
+      players: [
+        { id: 'trade-chychrun', name: 'Jakob Chychrun', position: 'D', age: 28, capHit: 4_600_000, contractEnd: 2028, type: 'UFA', overall: 84, potential: 84, note: 'Top-4 puck-mover. PP QB. Slight cap increase but massive D upgrade.' },
+      ],
+      picks: [],
+    },
+    impact: 'Swap Goodrow for a legitimate top-4 D. Chychrun fills the offensive defenseman hole next to Dickinson. 2 years of control.',
+    tier: 'major',
+  },
+  {
+    id: 'trade-for-broberg',
+    title: 'Poach Philip Broberg from St. Louis',
+    description: 'The Blues signed Broberg to an offer sheet last year but he hasn\'t fit into their system. He\'s a mobile, skating left-D who could thrive with more ice time. They\'ll take a mid-round pick to move on.',
+    partner: 'STL',
+    partnerName: 'St. Louis Blues',
+    sending: {
+      players: [],
+      picks: [
+        { round: 4, note: 'VGK 2026 4th-round pick', source: 'VGK' },
+      ],
+    },
+    receiving: {
+      players: [
+        { id: 'trade-broberg', name: 'Philip Broberg', position: 'D', age: 25, capHit: 4_580_000, contractEnd: 2027, type: 'RFA', overall: 79, potential: 82, note: 'Mobile skating D. 25 years old. Needs a bigger role to unlock his ceiling.' },
+      ],
+      picks: [],
+    },
+    impact: 'Add a young, mobile defenseman for just a 4th-rounder. If Broberg develops he\'s a steal. Some risk he doesn\'t hit his ceiling.',
+    tier: 'major',
+  },
+  {
+    id: 'trade-orlov-for-assets',
+    title: 'Move Dmitry Orlov to Colorado',
+    description: 'Colorado needs a veteran D for one more Cup run with Mackinnon. Orlov has a 15-team NTL in 26-27 but would waive for a contender. His $6.5M comes off the books after this year. They\'ll send a 2nd and a depth forward back.',
+    partner: 'COL',
+    partnerName: 'Colorado Avalanche',
+    sending: {
+      players: [{ id: 'orlov', name: 'Dmitry Orlov', position: 'D', capHit: 6_500_000 }],
+    },
+    receiving: {
+      players: [
+        { id: 'trade-col-fwd', name: 'Mikko Rantanen', position: 'RW', age: 29, capHit: 9_250_000, contractEnd: 2029, type: 'UFA', overall: 89, potential: 87, note: 'Wait — Colorado is including Rantanen? He wants out too. They retain $2M.' },
+      ],
+      picks: [],
+    },
+    impact: 'Swap an aging D for a top-line winger. Rantanen at $7.25M (after retention) next to Celebrini is elite. Lose D depth but gain a franchise winger.',
+    tier: 'blockbuster',
+  },
+  {
+    id: 'trade-for-compher',
+    title: 'Add J.T. Compher from Detroit',
+    description: 'Detroit is clearing cap. Compher ($5.1M) is a reliable middle-six forward who can play center or wing. They\'ll retain 40% to move him, dropping his hit to $3.06M. Just costs a late pick.',
+    partner: 'DET',
+    partnerName: 'Detroit Red Wings',
+    sending: {
+      players: [],
+      picks: [
+        { round: 5, note: 'MTL 2026 5th-round pick', source: 'MTL' },
+      ],
+    },
+    receiving: {
+      players: [
+        { id: 'trade-compher', name: 'J.T. Compher', position: 'C', age: 31, capHit: 3_060_000, contractEnd: 2028, type: 'UFA', overall: 80, potential: 78, note: 'Versatile middle-six. Can play C or W. Cup winner with COL. DET retains 40%.' },
+      ],
+      picks: [],
+    },
+    impact: 'Add a versatile depth forward with Cup experience at a discount cap hit. Low-risk move that adds depth for a playoff push.',
+    tier: 'minor',
+  },
+  {
+    id: 'trade-toffoli-for-package',
+    title: 'Move Tyler Toffoli to Tampa Bay',
+    description: 'Tampa needs scoring wingers for their playoff window. Toffoli has a full NMC but he\'d waive for a Cup contender. His $6M hit is steep but Tampa\'s all-in. They\'ll send back a 1st + conditional 3rd.',
+    partner: 'TBL',
+    partnerName: 'Tampa Bay Lightning',
+    sending: {
+      players: [{ id: 'toffoli', name: 'Tyler Toffoli', position: 'LW', capHit: 6_000_000 }],
+    },
+    receiving: {
+      players: [],
+      picks: [
+        { round: 1, note: 'Tampa 2027 1st-round pick', source: 'TBL' },
+        { round: 3, note: 'Tampa 2027 3rd (conditional)', source: 'TBL' },
+      ],
+    },
+    impact: 'Cash in Toffoli\'s value for a future 1st + 3rd. Frees $6M in cap space but you lose a proven top-6 winger. Only makes sense if you\'re adding elsewhere.',
+    tier: 'major',
+  },
+  {
+    id: 'trade-picks-for-tierney',
+    title: 'Acquire Sean Couturier from Philadelphia',
+    description: 'Philadelphia is in a full rebuild. Couturier ($7.75M) is a shell of his Selke-winning self but still a legitimate 3C. Philly will retain 50%, dropping the hit to $3.875M. They just want a pick to move on.',
+    partner: 'PHI',
+    partnerName: 'Philadelphia Flyers',
+    sending: {
+      players: [],
+      picks: [
+        { round: 6, note: 'PHI 2026 6th-round pick', source: 'PHI' },
+      ],
+    },
+    receiving: {
+      players: [
+        { id: 'trade-couturier', name: 'Sean Couturier', position: 'C', age: 34, capHit: 3_875_000, contractEnd: 2030, type: 'UFA', overall: 80, potential: 76, note: 'Former Selke winner. PHI retains 50%. Low cap hit for a veteran two-way C.' },
+      ],
+      picks: [],
+    },
+    impact: 'Add a former Selke winner at half price. Couturier is past his prime but still a solid 3C. Long-term commitment (through 2030) is the risk.',
+    tier: 'minor',
+  },
 ];

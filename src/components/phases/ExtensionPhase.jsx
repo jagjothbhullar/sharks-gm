@@ -99,7 +99,7 @@ export default function ExtensionPhase({ extensionEligible, roster, capSpace, on
 
       <div className="phase-actions">
         <button className="btn btn-primary" onClick={onAdvance}>
-          {remaining.length === 0 ? 'Proceed to Offer Sheets' : 'Skip Remaining & Proceed'}
+          {remaining.length === 0 ? 'Proceed to Trades' : 'Skip Remaining & Continue'}
         </button>
       </div>
 

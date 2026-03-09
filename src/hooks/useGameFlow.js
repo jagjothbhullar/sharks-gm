@@ -5,11 +5,11 @@ const PHASES = [
   { id: 'SEASON_RECAP', label: 'Season Recap', date: 'End of 2025-26 Season', canSkip: false },
   { id: 'BUYOUT_WINDOW', label: 'Buyouts', date: 'June 15-30, 2026', canSkip: true },
   { id: 'QUALIFYING_OFFERS', label: 'QOs', date: 'June 25, 2026', canSkip: false },
+  { id: 'RESIGN_OWN', label: 'Re-Sign', date: 'Late June 2026', canSkip: true },
+  { id: 'EXTENSIONS', label: 'Extensions', date: 'Late June 2026', canSkip: true },
   { id: 'TRADES', label: 'Trades', date: 'Draft Week, June 2026', canSkip: true },
   { id: 'NHL_DRAFT', label: 'Draft', date: 'June 26-27, 2026', canSkip: false },
   { id: 'FREE_AGENCY', label: 'Free Agency', date: 'July 1, 2026 — 12:00 PM ET', canSkip: false },
-  { id: 'RESIGN_OWN', label: 'Re-Sign', date: 'July - August 2026', canSkip: true },
-  { id: 'EXTENSIONS', label: 'Extensions', date: 'July 2026', canSkip: true },
   { id: 'OFFER_SHEETS', label: 'Offer Sheets', date: 'July - December', canSkip: true },
   { id: 'TRAINING_CAMP', label: 'Camp', date: 'September 2026', canSkip: false },
 ];

@@ -6,6 +6,7 @@ export const CBA = {
   cap: {
     current: 95_500_000,        // 2025-26 upper limit
     projected: 104_000_000,     // 2026-27 upper limit (projected)
+    projected2028: 113_500_000, // 2027-28 upper limit (projected)
     floor: 76_900_000,          // 2026-27 lower limit (projected)
     midpoint: 90_450_000,       // midpoint for cap benefit calculations
   },

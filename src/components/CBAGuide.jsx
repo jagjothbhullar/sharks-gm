@@ -10,8 +10,10 @@ export default function CBAGuide() {
         <Section title="Salary Cap">
           <Item label="2025-26 Cap" value={formatCap(CBA.cap.current)} />
           <Item label="2026-27 Cap (projected)" value={formatCap(CBA.cap.projected)} />
+          <Item label="2027-28 Cap (projected)" value={formatCap(CBA.cap.projected2028)} />
           <Item label="2026-27 Floor" value={formatCap(CBA.cap.floor)} />
           <Item label="Max Player Salary" value={formatCap(maxPlayerSalary())} />
+          <p className="note">The cap is rising fast — from $88M in 2024-25 to a projected $113.5M by 2027-28. That's $25.5M in new cap space across the league in just 3 years. Smart GMs plan contracts around this growth. A deal that looks expensive today will be a bargain by 2028.</p>
           <p className="note">Cap = total cap hits of all players on your roster. Calculated as AAV (Average Annual Value) of each contract. Must be under the ceiling and above the floor at all times during the season.</p>
         </Section>
 

@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import { SHARKS_ROSTER, SHARKS_DEAD_CAP, SHARKS_DRAFT_PICKS, SHARKS_PROSPECTS, DRAFT_PROSPECTS_2026, SHARKS_EXTENSIONS } from '../data/sharks';
+import { SHARKS_ROSTER, SHARKS_DEAD_CAP, SHARKS_DRAFT_PICKS, SHARKS_PROSPECTS, DRAFT_PROSPECTS_2026, SHARKS_EXTENSIONS, EXTENSION_ELIGIBLE } from '../data/sharks';
 import { UFA_POOL, RFA_POOL } from '../data/freeAgents';
 import { CBA, calculateBuyout, getOfferSheetCompensation } from '../data/cba';
 
@@ -197,6 +197,73 @@ export function useGMState() {
     return tradeDetail;
   }, [addLog]);
 
+  const executeTrade = useCallback((tradeScenario) => {
+    // Remove players we're sending
+    const sendingIds = tradeScenario.sending.players.map(p => p.id);
+    setRoster(prev => prev.filter(p => !sendingIds.includes(p.id)));
+
+    // Remove picks we're sending
+    if (tradeScenario.sending.picks) {
+      const sendSources = tradeScenario.sending.picks.map(p => p.source);
+      setDraftPicks(prev => {
+        const remaining = [...prev];
+        for (const source of sendSources) {
+          const idx = remaining.findIndex(p => p.source === source);
+          if (idx >= 0) remaining.splice(idx, 1);
+        }
+        return remaining;
+      });
+    }
+
+    // Add players we're receiving
+    if (tradeScenario.receiving.players.length > 0) {
+      setRoster(prev => [...prev, ...tradeScenario.receiving.players]);
+    }
+
+    // Add picks we're receiving
+    if (tradeScenario.receiving.picks && tradeScenario.receiving.picks.length > 0) {
+      setDraftPicks(prev => [...prev, ...tradeScenario.receiving.picks]);
+    }
+
+    const sentNames = tradeScenario.sending.players.map(p => p.name).join(', ');
+    const sentPicks = tradeScenario.sending.picks?.map(p => `R${p.round}`).join(', ') || '';
+    const gotNames = tradeScenario.receiving.players.map(p => p.name).join(', ');
+    const gotPicks = tradeScenario.receiving.picks?.map(p => `R${p.round}`).join(', ') || '';
+    const sent = [sentNames, sentPicks].filter(Boolean).join(', ');
+    const got = [gotNames, gotPicks].filter(Boolean).join(', ') || 'cap space';
+    addLog('TRADE', `Trade with ${tradeScenario.partnerName}: Sent ${sent} → Received ${got}`);
+  }, [addLog]);
+
+  const extendPlayer = useCallback((extensionPlayer, term, aav) => {
+    const maxTerm = CBA.contracts.maxTerm; // 8 years for own team
+    if (term > maxTerm) {
+      return { error: `Max extension term is ${maxTerm} years` };
+    }
+    if (aav > PROJECTED_CAP * CBA.contracts.maxSalaryPct) {
+      return { error: `Max salary is 20% of cap ($${(PROJECTED_CAP * 0.2 / 1e6).toFixed(1)}M)` };
+    }
+    if (aav < extensionPlayer.minAAV) {
+      return { error: `${extensionPlayer.name} won't sign for less than $${(extensionPlayer.minAAV / 1e6).toFixed(1)}M` };
+    }
+
+    // Update the roster player's contract — extension kicks in after current deal
+    setRoster(prev => prev.map(p => {
+      if (p.id === extensionPlayer.id) {
+        return {
+          ...p,
+          capHit: aav,
+          contractEnd: 2027 + term, // starts after current deal ends in 2027
+          type: 'Extended',
+          clause: term >= 5 ? 'M-NTC' : null,
+        };
+      }
+      return p;
+    }));
+
+    addLog('EXTENSION', `Extended ${extensionPlayer.name} (${extensionPlayer.position}) — ${term}yr × $${(aav / 1e6).toFixed(2)}M (kicks in 2027-28)`);
+    return { success: true };
+  }, [addLog]);
+
   const draftProspect = useCallback((prospect, pickIndex) => {
     const pick = draftPicks[pickIndex];
     if (!pick) return { error: 'No pick available' };
@@ -237,12 +304,16 @@ export function useGMState() {
     draftProspects: DRAFT_PROSPECTS_2026,
     deadCap: SHARKS_DEAD_CAP,
 
+    extensionEligible: EXTENSION_ELIGIBLE,
+
     signUFA,
     reSign,
     letWalk,
     offerSheet,
     buyoutPlayer,
     makeTrade,
+    executeTrade,
     draftProspect,
+    extendPlayer,
   };
 }
